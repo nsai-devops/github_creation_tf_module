@@ -8,4 +8,5 @@ module "github_creation" {
   name        = "demo-repo-1"
   secret_name = "key1"
   value       = "value1"
+  git_token   = var.git_token
 }
