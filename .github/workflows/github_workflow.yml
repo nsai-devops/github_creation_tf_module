@@ -16,4 +16,7 @@ jobs:
       - name: Terrafrom init
         run: |
           ls
-          #terraform init --backent-config=terraform.tfstate
+          terraform init -backend-config="path=./terraform.tfstate"
+
+     - name: Terrafrom validate
+          terraform validate  
