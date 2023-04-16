@@ -32,14 +32,10 @@ jobs:
 
     - name: Terrafrom apply
       run: |
-        terraform destroy --auto-approve
-        #terraform apply --auto-approve
+        #terraform destroy --auto-approve
+        terraform apply --auto-approve
       env:
         TF_VAR_git_token: ${{ secrets.git_token }}
-
-    # - uses: actions/labeler@v2
-    #   with:
-    #     repo-token: ${{ secrets.git_token }}
 
     - name: GIT commit and push terraform state
       run: |
@@ -52,9 +48,3 @@ jobs:
       env:
         CI_COMMIT_MESSAGE: Continuous Integration Terraform state
         CI_COMMIT_AUTHOR: nsai-devops
-
-    # - name: Push changes
-    #   uses: ad-m/github-push-action@master
-    #   with:
-    #     github_token: ${{ secrets.git_token }}
-    #     branch: 'main'
