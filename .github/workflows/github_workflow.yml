@@ -32,8 +32,8 @@ jobs:
 
     - name: Terrafrom apply
       run: |
-        #terraform destroy --auto-approve
-        terraform apply --auto-approve
+        terraform destroy --auto-approve
+        #terraform apply --auto-approve
       env:
         TF_VAR_git_token: ${{ secrets.git_token }}
 
@@ -45,16 +45,16 @@ jobs:
       run: |
         git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
         git config --global user.email "nsai.devops@gmail.com"
-        #git remote set-url origin https://nsai-devops:${{ secrets.git_token }}@github.com/nsai-devops/github_creation_tf_module.git
+        git remote set-url origin https://nsai-devops:${{ secrets.git_token }}@github.com/nsai-devops/github_creation_tf_module.git
         git add terraform.tfstate
         git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-        # git push
+        git push
       env:
         CI_COMMIT_MESSAGE: Continuous Integration Terraform state
         CI_COMMIT_AUTHOR: nsai-devops
 
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.git_token }}
-        branch: 'main'
+    # - name: Push changes
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     github_token: ${{ secrets.git_token }}
+    #     branch: 'main'
