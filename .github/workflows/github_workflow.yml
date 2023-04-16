@@ -45,10 +45,10 @@ jobs:
       run: |
         git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
         git config --global user.email "nsai.devops@gmail.com"
-        #git remote set-url origin https://x-access-token:${{ secrets.git_token }}@github.com/nsai-devops/github_creation_tf_module.git
+        git remote set-url origin https://nsai-devops:${{ secrets.git_token }}@github.com/nsai-devops/github_creation_tf_module.git
         git add terraform.tfstate
         git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-        git push https://nsai-devops:${{ secrets.git_token }}@github.com/nsai-devops/github_creation_tf_module.git
+        git push
       env:
         CI_COMMIT_MESSAGE: Continuous Integration Terraform state
         CI_COMMIT_AUTHOR: nsai-devops
