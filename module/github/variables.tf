@@ -3,37 +3,37 @@ variable "name" {
 }
 
 variable "description" {
-  type = string
+  type    = string
   default = "codebase"
 }
 
 variable "visibility" {
-  type = string
+  type    = string
   default = "private"
 }
 
 variable "owner" {
-  type = string
+  type    = string
   default = "dotnet-chat-project"
 }
 
 variable "repository" {
-  type = string
-  default = "template-repo" 
+  type    = string
+  default = "template-repo"
 }
 
 variable "include_all_branches" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "secret_name" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "value" {
-  type = string
+  type    = string
   default = ""
 }
 

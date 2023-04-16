@@ -2,9 +2,7 @@
 resource "github_repository" "github" {
   name        = var.name
   description = var.description
-
-  visibility = var.visibility
-
+  visibility  = var.visibility
   template {
     owner                = var.owner
     repository           = var.repository
@@ -13,7 +11,7 @@ resource "github_repository" "github" {
 }
 
 resource "github_actions_secret" "secrets" {
-  repository       = github_repository.github.name
-  secret_name      = var.secret_name
-  plaintext_value  = var.value
+  repository      = github_repository.github.name
+  secret_name     = var.secret_name
+  plaintext_value = var.value
 }

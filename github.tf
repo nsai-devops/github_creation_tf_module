@@ -4,8 +4,8 @@
 } */
 
 module "github_creation" {
-  source = "./module/github/"
-  name = "demo-repo-1"
+  source      = "./module/github/"
+  name        = "demo-repo-1"
   secret_name = "key1"
-  value = "value1"
+  value       = "value1"
 }
