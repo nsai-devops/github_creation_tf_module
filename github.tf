@@ -1,7 +1,7 @@
-/* variable "GITHUB_TOKEN" {
-  type = string
-  default = ""
-} */
+variable "git_token" {
+  type        = string
+  description = "github repo creation token"
+}
 
 module "github_creation" {
   source      = "./module/github/"
