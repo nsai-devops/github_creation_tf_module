@@ -13,38 +13,43 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Terrafrom init
-      run: |
-        ls
-        terraform init -backend-config="path=./terraform.tfstate"
+    - name: plan upload
+      uses: nsai-devops/reusable-workflows/blob/main/.github/workflows/plan.yml@main
+      secrets:
+        git_token: ${{ secrets.git_token }}
 
-    - name: Terrafrom validate
-      run: |
-        terraform validate
-      env:
-        TF_VAR_git_token: ${{ secrets.git_token }}
+    # - name: Terrafrom init
+    #   run: |
+    #     ls
+    #     terraform init -backend-config="path=./terraform.tfstate"
 
-    - name: Terrafrom plan
-      run: |
-        terraform plan
-      env:
-        TF_VAR_git_token: ${{ secrets.git_token }}
+    # - name: Terrafrom validate
+    #   run: |
+    #     terraform validate
+    #   env:
+    #     TF_VAR_git_token: ${{ secrets.git_token }}
 
-    - name: Terrafrom apply
-      run: |
-        #terraform destroy --auto-approve
-        terraform apply --auto-approve
-      env:
-        TF_VAR_git_token: ${{ secrets.git_token }}
+    # - name: Terrafrom plan
+    #   run: |
+    #     terraform plan
+    #   env:
+    #     TF_VAR_git_token: ${{ secrets.git_token }}
 
-    - name: GIT commit and push terraform state
-      run: |
-        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-        git config --global user.email "nsai.devops@gmail.com"
-        git remote set-url origin https://nsai-devops:${{ secrets.git_token }}@github.com/nsai-devops/github_creation_tf_module.git
-        git add terraform.tfstate
-        git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-        git push
-      env:
-        CI_COMMIT_MESSAGE: Continuous Integration Terraform state
-        CI_COMMIT_AUTHOR: nsai-devops
+    # - name: Terrafrom apply
+    #   run: |
+    #     #terraform destroy --auto-approve
+    #     terraform apply --auto-approve
+    #   env:
+    #     TF_VAR_git_token: ${{ secrets.git_token }}
+
+    # - name: GIT commit and push terraform state
+    #   run: |
+    #     git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+    #     git config --global user.email "nsai.devops@gmail.com"
+    #     git remote set-url origin https://nsai-devops:${{ secrets.git_token }}@github.com/nsai-devops/github_creation_tf_module.git
+    #     git add terraform.tfstate
+    #     git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+    #     git push
+    #   env:
+    #     CI_COMMIT_MESSAGE: Continuous Integration Terraform state
+    #     CI_COMMIT_AUTHOR: nsai-devops
