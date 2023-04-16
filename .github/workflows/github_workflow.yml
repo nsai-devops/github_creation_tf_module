@@ -32,7 +32,18 @@ jobs:
 
     - name: Terrafrom apply
       run: |
-        terraform destroy --auto-approve
-        #terraform apply --auto-approve
+        #terraform destroy --auto-approve
+        terraform apply --auto-approve
       env:
         TF_VAR_git_token: ${{ secrets.git_token }}
+
+    - name: GIT commit and push terraform state
+      run: |
+        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config --global user.email "nsai.devops@gmail.com"
+        git add terraform.tfstate
+        git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+        git push
+      env:
+        CI_COMMIT_MESSAGE: Continuous Integration Terraform state
+        CI_COMMIT_AUTHOR: nsai-devops
