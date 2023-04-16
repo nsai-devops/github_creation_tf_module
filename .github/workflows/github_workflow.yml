@@ -23,3 +23,9 @@ jobs:
         terraform validate
       env:
         TF_VAR_git_token: ${{ secrets.git_token }}
+
+    - name: Terrafrom plan
+      run: |
+        terraform plan
+      env:
+        TF_VAR_git_token: ${{ secrets.git_token }}
