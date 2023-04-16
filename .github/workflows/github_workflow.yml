@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  Terraform-validate:
+  Terraform:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -27,5 +27,11 @@ jobs:
     - name: Terrafrom plan
       run: |
         terraform plan
+      env:
+        TF_VAR_git_token: ${{ secrets.git_token }}
+
+    - name: Terrafrom apply
+      run: |
+        terraform apply
       env:
         TF_VAR_git_token: ${{ secrets.git_token }}
