@@ -7,10 +7,10 @@ on:
         type: string
         description: 'terraform action'
         default: 'apply'
-  push:
-    branches:
-    - main
-  pull_request:
+  # push:
+  #   branches:
+  #   - main
+  # pull_request:
 env:
   tf-action: '${{ github.event.inputs.tf-action }}'
 
@@ -26,7 +26,7 @@ jobs:
         echo "tf-action: ${{ github.event.inputs.tf-action }}"
         echo "tf-action: ${{ env.tf-action }}"
 
-  # Terraform:
+  Terraform:
     # runs-on: ubuntu-latest
     # steps:
     # # - name: Checkout
@@ -36,12 +36,12 @@ jobs:
     #     ls
     #      echo "tf-action: ${{ github.event.inputs.tf-action }}"
 
-    # uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
+    uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
     # with:
     #   tf-action: '${{ github.event.inputs.tf-action }}'
-    # secrets:  
-    #   git_token: ${{ secrets.git_token }}
-    #   tf-action: ${{ env.tf-action }}
+    secrets:  
+      git_token: ${{ secrets.git_token }}
+      tf-action: ${{ env.tf-action }}
 
     # - name: Terrafrom init
     #   run: |
