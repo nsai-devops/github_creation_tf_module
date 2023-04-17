@@ -11,6 +11,8 @@ on:
     branches:
     - main
   pull_request:
+env:
+  tf-action: '${{ github.event.inputs.tf-action }}'
 
 jobs:
   precheck:
@@ -21,7 +23,9 @@ jobs:
     - name: Print tf-action
       run: |
         ls
-         echo "tf-action: ${{ github.event.inputs.tf-action }}"
+        echo "tf-action: ${{ github.event.inputs.tf-action }}"
+        echo "tf-action: ${{ env.tf-action }}"
+
   Terraform:
     # runs-on: ubuntu-latest
     # steps:
@@ -33,10 +37,11 @@ jobs:
     #      echo "tf-action: ${{ github.event.inputs.tf-action }}"
 
     uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
-    with:
-      tf-action: '${{ github.event.inputs.tf-action }}'
+    # with:
+    #   tf-action: '${{ github.event.inputs.tf-action }}'
     secrets:  
       git_token: ${{ secrets.git_token }}
+      tf-action: ${{ env.tf-action }}
 
     # - name: Terrafrom init
     #   run: |
