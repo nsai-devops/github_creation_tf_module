@@ -41,7 +41,7 @@ jobs:
     #   tf-action: '${{ github.event.inputs.tf-action }}'
     secrets:  
       git_token: ${{ secrets.git_token }}
-      #tf-action: ${{ env.tf-action }}
+      tf-action: ${{ env.tf-action }}
 
     # - name: Terrafrom init
     #   run: |
