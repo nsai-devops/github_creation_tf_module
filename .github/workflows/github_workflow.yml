@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       tf-action:
-        required: true
+        required: false
         type: string
         description: 'terraform action'
         default: 'apply'
