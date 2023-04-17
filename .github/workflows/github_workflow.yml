@@ -26,7 +26,7 @@ jobs:
         echo "tf-action: ${{ github.event.inputs.tf-action }}"
         echo "tf-action: ${{ env.tf-action }}"
 
-  Terraform:
+  # Terraform:
     # runs-on: ubuntu-latest
     # steps:
     # # - name: Checkout
