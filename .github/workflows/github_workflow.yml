@@ -1,4 +1,4 @@
-name: 'Github-repo-creation '
+name: 'Github-repo-creation'
 on:
   workflow_dispatch:
     # inputs:
@@ -25,7 +25,7 @@ jobs:
       run: |
         ls
         echo "tf-action: ${{ github.event.inputs.tf_action }}"
-        echo "tf-action: ${{ secrets.tf_action }}"
+        echo "tf-action: ${{ secrets.TF_ACTION }}"
 
   Terraform:
     # runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
     #   tf_action: '${{ github.event.inputs.tf_action }}'
     secrets:  
       git_token: ${{ secrets.git_token }}
-      tf_action: ${{ secrets.tf-action }}
+      tf_action: ${{ secrets.TF_ACTION }}
 
     # - name: Terrafrom init
     #   run: |
