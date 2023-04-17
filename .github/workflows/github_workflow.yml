@@ -11,8 +11,8 @@ on:
   #   branches:
   #   - main
   # pull_request:
-env:
-  tfaction: '${{ github.event.inputs.tfaction }}'
+# env:
+#   tfaction: '${{ github.event.inputs.tfaction }}'
 
 
 jobs:
