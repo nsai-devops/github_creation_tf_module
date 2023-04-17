@@ -21,7 +21,7 @@ jobs:
     - name: Print tf-action
       run: |
         ls
-         echo "tf-action: ${{ inputs.tf-action }}"
+         echo "tf-action: ${{ github.event.inputs.tf-action }}"
 
     # uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
     # with:
