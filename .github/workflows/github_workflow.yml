@@ -21,7 +21,7 @@ jobs:
 
     uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
     with:
-      tf-action: ${{ inputs.tf-action }}
+      tf-action: ${{ github.event.inputs.tf-action }}
     secrets:  
       git_token: ${{ secrets.git_token }}
 
