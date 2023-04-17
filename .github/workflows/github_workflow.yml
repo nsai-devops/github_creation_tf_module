@@ -13,7 +13,7 @@ on:
   pull_request:
 
 jobs:
-  Terraform:
+  precheck:
     runs-on: ubuntu-latest
     steps:
     # - name: Checkout
@@ -22,12 +22,21 @@ jobs:
       run: |
         ls
          echo "tf-action: ${{ github.event.inputs.tf-action }}"
+  Terraform:
+    # runs-on: ubuntu-latest
+    # steps:
+    # # - name: Checkout
+    # #   uses: actions/checkout@v3
+    # - name: Print tf-action
+    #   run: |
+    #     ls
+    #      echo "tf-action: ${{ github.event.inputs.tf-action }}"
 
-    # uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
-    # with:
-    #   tf-action: ${{ github.event.inputs.tf-action }}
-    # secrets:  
-    #   git_token: ${{ secrets.git_token }}
+    uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
+    with:
+      tf-action: ${{ github.event.inputs.tf-action }}
+    secrets:  
+      git_token: ${{ secrets.git_token }}
 
     # - name: Terrafrom init
     #   run: |
