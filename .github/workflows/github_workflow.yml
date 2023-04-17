@@ -1,12 +1,12 @@
 name: 'Github-repo-creation '
 on:
   workflow_dispatch:
-    inputs:
-      tf-action:
-        required: true
-        type: string
-        description: 'terraform action'
-        default: 'apply'
+    # inputs:
+    #   tf-action:
+    #     required: true
+    #     type: string
+    #     description: 'terraform action'
+    #     default: 'apply'
   push:
     branches:
     - main
@@ -21,7 +21,7 @@ jobs:
 
     uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
     secrets:
-      tf-action: ${{ inputs.tf-action }}
+      # tf-action: ${{ inputs.tf-action }}
       git_token: ${{ secrets.git_token }}
 
     # - name: Terrafrom init
