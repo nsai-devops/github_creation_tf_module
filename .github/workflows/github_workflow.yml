@@ -1,12 +1,12 @@
 name: 'Github-repo-creation'
 on:
   workflow_dispatch:
-    inputs:
-      tfaction:
-        required: false
-        type: string
-        description: 'terraform action'
-        default: 'apply'
+    # inputs:
+    #   tfaction:
+    #     required: false
+    #     type: string
+    #     description: 'terraform action'
+    #     default: 'apply'
   # push:
   #   branches:
   #   - main
