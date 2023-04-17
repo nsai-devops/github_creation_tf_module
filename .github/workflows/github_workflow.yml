@@ -1,18 +1,18 @@
 name: 'Github-repo-creation'
 on:
   workflow_dispatch:
-    # inputs:
-    #   tf_action:
-    #     required: false
-    #     type: string
-    #     description: 'terraform action'
-    #     default: 'apply'
+    inputs:
+      tfaction:
+        required: false
+        type: string
+        description: 'terraform action'
+        default: 'apply'
   # push:
   #   branches:
   #   - main
   # pull_request:
-# env:
-  # tf_action: '${{ github.event.inputs.tf_action }}'
+env:
+  tfaction: '${{ github.event.inputs.tfaction }}'
 
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
     - name: Print tf-action
       run: |
         ls
-        echo "tf-action: ${{ github.event.inputs.tf_action }}"
+        echo "tf-action: ${{ env.tfaction }}"
         echo "tf-action: ${{ secrets.TF_ACTION }}"
 
   Terraform:
@@ -38,8 +38,8 @@ jobs:
     #      echo "tf-action: ${{ github.event.inputs.tf-action }}"
 
     uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
-    # with:
-    #   tf_action: '${{ github.event.inputs.tf_action }}'
+    with:
+      tfaction: '${{ env.tfaction }}'
     secrets:  
       git_token: ${{ secrets.git_token }}
       tf_action: ${{ secrets.TF_ACTION }}
