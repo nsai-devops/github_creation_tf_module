@@ -38,8 +38,8 @@ jobs:
     #      echo "tf-action: ${{ github.event.inputs.tf-action }}"
 
     uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
-    with:
-      tfaction: '${{ env.tfaction }}'
+    # with:
+    #   tfaction: '${{ env.tfaction }}'
     secrets:  
       git_token: ${{ secrets.git_token }}
       tf_action: ${{ secrets.TF_ACTION }}
