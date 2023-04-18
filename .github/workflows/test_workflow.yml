@@ -12,8 +12,8 @@ on:
     - main
   # pull_request:
 
-env:
-  tfaction: '${{ github.event.inputs.tfaction }}'
+# env:
+#   tfaction: '${{ github.event.inputs.tfaction }}'
 
 
 jobs:
@@ -25,8 +25,8 @@ jobs:
     - name: Print tf-action
       run: |
         ls
-        echo "tf-action: ${{ env.tfaction }}"
-        echo "tf-action: ${{ secrets.TF_ACTION }}"
+        echo "tf-action: ${{ github.event.inputs.tfaction }}"
+        # echo "tf-action: ${{ secrets.TF_ACTION }}"
 
   # Terraform:
   #   # runs-on: ubuntu-latest
