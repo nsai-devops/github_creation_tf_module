@@ -1,0 +1,13 @@
+name: 'Terraform-Github-repo-creation'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+jobs:
+  Terraform:
+    uses: nsai-devops/reusable-workflows/.github/workflows/terraform-apply.yml@main
+    secrets:  
+      git_token: ${{ secrets.git_token }}
+
