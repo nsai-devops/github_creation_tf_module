@@ -25,7 +25,7 @@ jobs:
     - name: Print tf-action
       run: |
         ls
-        echo "tf-action: ${{ github.event.inputs.tfaction }}"
+        echo "tf-action: ${{ inputs.tfaction }}"
         # echo "tf-action: ${{ secrets.TF_ACTION }}"
 
   # Terraform:
