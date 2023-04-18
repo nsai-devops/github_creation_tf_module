@@ -1,15 +1,14 @@
-name: 'Test-workflow'
+name: Test-workflow
 on:
   workflow_dispatch:
     inputs:
       input_1:
-        description: 'Input 1'
+        description: Input 1
         required: true
-        default: 'default value'
+        default: default value
       input_2:
-        description: 'Input 2'
+        description: Input 2
         required: false
-
 jobs:
   precheck:
     runs-on: ubuntu-latest
@@ -19,13 +18,6 @@ jobs:
           ls
           echo 'input-1: ${{ inputs.input_1 }}'
           echo 'input-2: ${{ inputs.input_2 }}'
-
-  # workflow-call-test:
-  #   uses: nsai-devops/reusable-workflows/.github/workflows/test.yml@main
-  #   with:
-  #     input_1: ${{ inputs.input_1 }}
-  #     input_2: ${{ inputs.input_2 }}
-
   workflow-call-test:
     uses: nsai-devops/reusable-workflows/.github/workflows/test.yml@main
     with:
