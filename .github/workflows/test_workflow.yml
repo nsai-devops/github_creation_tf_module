@@ -1,0 +1,48 @@
+name: 'Test-workflow'
+on:
+  workflow_dispatch:
+    inputs:
+      tfaction:
+        required: false
+        type: string
+        description: 'terraform action'
+        default: 'apply'
+  push:
+    branches:
+    - main
+  # pull_request:
+
+env:
+  tfaction: '${{ github.event.inputs.tfaction }}'
+
+
+jobs:
+  precheck:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Print tf-action
+      run: |
+        ls
+        echo "tf-action: ${{ env.tfaction }}"
+        echo "tf-action: ${{ secrets.TF_ACTION }}"
+
+  # Terraform:
+  #   # runs-on: ubuntu-latest
+  #   # steps:
+  #   # # - name: Checkout
+  #   # #   uses: actions/checkout@v3
+  #   # - name: Print tf-action
+  #   #   run: |
+  #   #     ls
+  #   #      echo "tf-action: ${{ github.event.inputs.tf-action }}"
+
+  #   uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
+  #   # with:
+  #   #   tfaction: '${{ env.tfaction }}'
+  #   secrets:  
+  #     git_token: ${{ secrets.git_token }}
+  #     tf_action: ${{ secrets.TF_ACTION }}
+
+   
