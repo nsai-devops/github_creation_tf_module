@@ -2,47 +2,23 @@ name: 'Test-workflow'
 on:
   workflow_dispatch:
     inputs:
-      tfaction:
+      input_1:
+        description: 'Input 1'
+        required: true
+        default: 'default value'
+      input_2:
+        description: 'Input 2'
         required: false
-        type: string
-        description: 'terraform action'
-        default: 'apply'
-  push:
-    branches:
-    - main
-  # pull_request:
-
-# env:
-#   tfaction: '${{ github.event.inputs.tfaction }}'
-
 
 jobs:
   precheck:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Print tf-action
-      run: |
-        ls
-        echo "tf-action: ${{ inputs.tfaction }}"
-        # echo "tf-action: ${{ secrets.TF_ACTION }}"
+      - name: printing inputs
+        run: |
+          ls
+          echo 'input-1: ${{ inputs.input_1 }}'
+          echo 'input-2: ${{ inputs.input_2 }}'
 
-  # Terraform:
-  #   # runs-on: ubuntu-latest
-  #   # steps:
-  #   # # - name: Checkout
-  #   # #   uses: actions/checkout@v3
-  #   # - name: Print tf-action
-  #   #   run: |
-  #   #     ls
-  #   #      echo "tf-action: ${{ github.event.inputs.tf-action }}"
-
-  #   uses: nsai-devops/reusable-workflows/.github/workflows/deploy.yml@main
-  #   # with:
-  #   #   tfaction: '${{ env.tfaction }}'
-  #   secrets:  
-  #     git_token: ${{ secrets.git_token }}
-  #     tf_action: ${{ secrets.TF_ACTION }}
 
    
