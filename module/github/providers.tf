@@ -8,5 +8,6 @@ terraform {
 }
 provider "github" {
   token    = var.git_token
-  base_url = "https://api.github.com/dotnet-chat-project"
+  base_url = "https://api.github.com/"
+  owner    = "dotnet-chat-project"
 }
