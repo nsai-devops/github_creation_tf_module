@@ -7,5 +7,6 @@ terraform {
   }
 }
 provider "github" {
-  token = var.git_token
+  token    = var.git_token
+  base_url = "https://api.github.com/dotnet-chat-project"
 }
